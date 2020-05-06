@@ -25,5 +25,18 @@ Route::get('/contacto/{nombre}/{edad}/{telefono}', function($nombre, $edad,$tele
 	return $nombre." ".$edad." ".$telefono;
 });
 
-Route::get('/producto','ProductoController@index');
-Route::get('/listaproducto','productos@listaproducto');
+//Route::get('/producto','ProductoController@index');
+
+Route::get('/producto','ProductoController@listar')->name('listarproductos');
+
+Route::get('/producto/crear','ProductoController@crear')->name('crear_productos');
+
+Route::post('/producto','ProductoController@guardar')->name('guardar_productos');
+
+Route::get('/producto/{id}/editar','ProductoController@editar')->name('editar_productos');
+
+Route::put('/producto/{id}','ProductoController@modificar')->name('modificar_productos');
+
+Route::delete('producto/{id}','ProductoController@eliminar')->name('eliminar_producto');
+
+Route::resource('/categorias','CategoriaController');
