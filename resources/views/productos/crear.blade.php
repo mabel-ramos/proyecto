@@ -1,28 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>CREAR</title>
-</head>
-<body>
-<div align="center">
-	<p>CREAR PRODUCTO</p>
-	<form action="{{route('guardar_productos')}}" method="POST">
-		@csrf
-		<table border="1">
-			<tr>
-				<td><label for="txtTipo">Tipo Producto</label></td>
-				<td><input type="text" name="txtTipo" id="txtTipo"></td>
-			</tr>
-			<tr>
-				<td><label for="txtDescripcion">Descripcion producto</label></td>
-				<td><input type="text" name="txtDescripcion" id="txtDescripcion"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" name="guardar" value="Enviar"></td>
-			</tr>
-		</table>
+@extends('layouts.admin')
+@section('contenedor')
 
-	</form>
+	
+<div class="row">
+	<div class="col-lg-4">
+		
+	</div>
+
+	<div class="col-lg-4">
+		<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Crear Producto</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{{route('guardar_productos')}}" method="POST">
+              	@csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="txtTipo">Tipo Producto</label>
+                    <input type="text" class="form-control" name="txtTipo" id="txtTipo" >
+                  </div>
+                  <div class="form-group">
+                    <label for="txtDescripcion">Descripcion Producto</label>
+                    <input type="text" class="form-control" name="txtDescripcion" id="txtDescripcion" >
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+              </form>
+            </div>
+	</div>
+	<div class="col-lg-4">
+		
+	</div>
+
+	
 </div>
-</body>
-</html>
+	
+
+@endsection

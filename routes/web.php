@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/','InicioController@index');
 
 Route::get('/saludo',function(){
 	return "HOLA MUNDO LARAVEL 2";

@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Categorias</title>
-</head>
-<body>
+@extends('layouts.admin')
+@section('contenedor')
 <div align="center">
 	<p>LISTA CATEGORIAS</p>
 	<a href="{{route('categorias.create')}}">Nueva Categoria</a>
@@ -41,5 +37,4 @@
 		
 	</table>
 </div>
-</body>
-</html>
+@endsection
