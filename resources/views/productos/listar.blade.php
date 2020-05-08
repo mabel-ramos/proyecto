@@ -28,58 +28,31 @@
                   <thead>
                     <tr>
                         <th>ID</th>
-						<th>TIPO</th>
-						<th>DESCRIPCION</th>
+						<th>CATEGORIA</th>
+						<th>NOMBRE</th>
+						<th>PRECIO</th>
+						<th>ESTADO</th>
 						<th>OPCIONES</th>
                     </tr>
                   </thead>
                   <tbody>
+                  	@foreach($productos as $prod)
                     <tr>
-						<td>1</td>
-						<td>COMPUTACION</td>
-						<td>TECLADO</td>
-						<td><a href="{{route('editar_productos',1)}}" class="btn btn-block bg-gradient-primary">Editar</a> 
-							<form action="{{route('eliminar_producto',1)}}" method="post" >
+						<td>{{$prod->id}}</td>
+						<td>{{$prod->descripcion}}</td>
+						<td>{{$prod->nombre}}</td>
+						<td>{{$prod->precio}}</td>
+						<td>{{$prod->estado}}</td>
+						<td><a href="{{route('editar_productos',$prod->id)}}" class="btn btn-block bg-gradient-primary">Editar</a> 
+							<form action="{{route('eliminar_producto',$prod->id)}}" method="post" >
 							@csrf
 							@Method('DELETE')
 							<input type="submit" name="Eliminar" value="eliminar" class="btn btn-block bg-gradient-danger">
 						</form>
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>COMPUTACION</td>
-						<td>IMPRESORA</td>
-						<td><a href="{{route('editar_productos',2)}}" class="btn btn-block bg-gradient-primary">Editar</a>
-						<form action="{{route('eliminar_producto',2)}}" method="post">
-							@csrf
-							@Method('DELETE')
-							<input type="submit" name="Eliminar" value="eliminar" class="btn btn-block bg-gradient-danger">
-						</form> </td>
-					</tr>    
-					<tr>
-						<td>1</td>
-						<td>COMPUTACION</td>
-						<td>TECLADO</td>
-						<td><a href="{{route('editar_productos',1)}}" class="btn btn-block bg-gradient-primary">Editar</a> 
-							<form action="{{route('eliminar_producto',1)}}" method="post">
-							@csrf
-							@Method('DELETE')
-							<input type="submit" name="Eliminar" value="eliminar" class="btn btn-block bg-gradient-danger">
-						</form>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>COMPUTACION</td>
-						<td>IMPRESORA</td>
-						<td><a href="{{route('editar_productos',2)}}" class="btn btn-block bg-gradient-primary">Editar</a>
-						<form action="{{route('eliminar_producto',2)}}" method="post">
-							@csrf
-							@Method('DELETE')
-							<input type="submit" name="Eliminar" value="eliminar" class="btn btn-block bg-gradient-danger">
-						</form> </td>
-					</tr>                    
+					@endforeach
+					     
                   </tbody>
                 </table>
               </div>

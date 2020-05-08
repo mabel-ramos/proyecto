@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Categorias;
 
 class CategoriaController extends Controller
 {
@@ -13,7 +14,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('categorias.lista');
+        $categorias =  Categorias::all();
+
+        return view('categorias.lista',compact('categorias'));
     }
 
     /**
@@ -34,7 +37,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->txtTipo." - ".$request->txtDescripcion;
+        $Categorias = new Categorias;
+        $Categorias->descripcion = $request->descripcion;
+        $Categorias->estado = "AC";
+        $Categorias->save();
+        return redirect('/categorias');
     }
 
     /**
@@ -56,7 +63,9 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        return view('categorias.editar',['id_cat'=>$id]);
+        $categorias = Categorias::find($id);
+
+        return view('categorias.editar',['id_cat'=>$id,'categorias'=>$categorias]);
     }
 
     /**
@@ -68,7 +77,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "ID: ".$id." TIPO: ".$request->txtTipo." DESCRIPCION: ".$request->txtDescripcion;
+        $Categorias = Categorias::find($id);
+        $Categorias->descripcion = $request->descripcion;
+        $Categorias->save();
+        return redirect('/categorias');       
     }
 
     /**
@@ -79,7 +91,8 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //return "Id a eliminar:  ".$id;
+        $Categorias = Categorias::find($id);
+        $Categorias->delete();
         return redirect('/categorias');
     }
 }

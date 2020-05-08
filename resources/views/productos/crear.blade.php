@@ -18,16 +18,26 @@
               	@csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="txtTipo">Tipo Producto</label>
-                    <input type="text" class="form-control" name="txtTipo" id="txtTipo" >
+                        <label>Categoria</label>
+                        <select class="form-control" name="categoria_id">
+                         @foreach($categorias as $cat)	
+                           <option value="{{$cat->id}}">{{$cat->descripcion}}</option>
+                         @endforeach 
+                          
+                        </select>
+                      </div>
+
+                  <div class="form-group">
+                    <label for="nombre">Nomnbre Producto</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" >
                   </div>
                   <div class="form-group">
-                    <label for="txtDescripcion">Descripcion Producto</label>
-                    <input type="text" class="form-control" name="txtDescripcion" id="txtDescripcion" >
+                    <label for="precio">Precio</label>
+                    <input type="text" class="form-control" name="precio" id="precio" >
                   </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Enviar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
             </div>

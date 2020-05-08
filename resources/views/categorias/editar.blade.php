@@ -1,30 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Editar categorias </title>
-</head>
-<body>
-	<div align="center">
-    <p>MODIFICAR categorias</p>
-	<form action="{{route('categorias.update',$id_cat)}}" method="POST">
-		@csrf		
-		@Method('PUT')
-		<table border="1">
-			<tr>
-				<td><label for="txtTipo">Tipo categorias</label></td>
-				<td><input type="text" name="txtTipo" id="txtTipo" value="COMIDA"></td>
-			</tr>
-			<tr>
-				<td><label for="txtDescripcion">Descripcion producto</label></td>
-				<td><input type="text" name="txtDescripcion" id="txtDescripcion" value="POLLO"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" name="guardar" value="Modificar"></td>
-			</tr>
-		</table>
+@extends('layouts.admin')
+@section('contenedor')
 
-	</form>
-
+<div class="row">
+	<div class="col-lg-4">
+		
 	</div>
-</body>
-</html>
+
+	<div class="col-lg-4">
+		<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Modificar Categoria</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{{route('categorias.update',$id_cat)}}" method="POST">
+              	@csrf
+              	@Method('PUT')
+                <div class="card-body">                  
+                  <div class="form-group">
+                    <label for="descripcion">Descripcion Categoria</label>
+                    <input type="text" class="form-control" name="descripcion" id="descripcion" value="{{$categorias->descripcion}}" >
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Editar</button>
+                </div>
+              </form>
+            </div>
+	</div>
+	<div class="col-lg-4">
+		
+	</div>
+
+	
+</div>
+
+@endsection
