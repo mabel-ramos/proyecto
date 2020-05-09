@@ -4,24 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categorias;
-use App\Http\Requests\CategoriasRequest;
-
-class CategoriaController extends Controller
+class CategoriasApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $categorias =  Categorias::all();
-
-        return view('categorias.lista',compact('categorias'));
+        return Categorias::all();
     }
 
     /**
@@ -31,7 +23,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categorias.crear');
+        //
     }
 
     /**
@@ -40,17 +32,13 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoriasRequest $request)
+    public function store(Request $request)
     {
-        /*$validatedata = $request->validate([
-            'descripcion' => 'required|unique:Categorias|max:50|min:3'
-        ]);*/
-
         $Categorias = new Categorias;
         $Categorias->descripcion = $request->descripcion;
         $Categorias->estado = "AC";
         $Categorias->save();
-        return redirect('/categorias');
+        return "Se registro correctamente";
     }
 
     /**
@@ -61,7 +49,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        return Categorias::where('id',$id)->get();
     }
 
     /**
@@ -72,9 +60,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categorias = Categorias::find($id);
-
-        return view('categorias.editar',['id_cat'=>$id,'categorias'=>$categorias]);
+        //
     }
 
     /**
@@ -86,13 +72,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedata = $request->validate([
-            'descripcion' => 'required|max:50|min:3|unique:Categorias,descripcion,'.$id
-        ]);
         $Categorias = Categorias::find($id);
         $Categorias->descripcion = $request->descripcion;
         $Categorias->save();
-        return redirect('/categorias');       
+        return "Se modifico correctamente";
     }
 
     /**
@@ -105,6 +88,7 @@ class CategoriaController extends Controller
     {
         $Categorias = Categorias::find($id);
         $Categorias->delete();
-        return redirect('/categorias');
+        return "Se elimino correctamente";
+
     }
 }

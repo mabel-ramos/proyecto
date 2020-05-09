@@ -8,6 +8,11 @@ use App\Categorias;
 
 class ProductoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     function index()
     {
     	return Productos::all();

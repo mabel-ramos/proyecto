@@ -18,7 +18,10 @@
                 <div class="card-body">                  
                   <div class="form-group">
                     <label for="descripcion">Descripcion Categoria</label>
-                    <input type="text" class="form-control" name="descripcion" id="descripcion" >
+                    <input type="text" class="form-control" name="descripcion" id="descripcion" value="{{old('descripcion')}}" >
+                    @error('descripcion')
+                      <p class="alert alert-danger">{{$message}}</p>
+                    @enderror
                   </div>
                 </div>
                 <div class="card-footer">
@@ -33,5 +36,6 @@
 
 	
 </div>
+
 
 @endsection

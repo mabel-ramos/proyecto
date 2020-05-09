@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
-Route::get('/','InicioController@index');
+Route::get('/inicio','InicioController@index');
 
 Route::get('/saludo',function(){
 	return "HOLA MUNDO LARAVEL 2";
@@ -42,3 +42,7 @@ Route::put('/producto/{id}','ProductoController@modificar')->name('modificar_pro
 Route::delete('producto/{id}','ProductoController@eliminar')->name('eliminar_producto');
 
 Route::resource('/categorias','CategoriaController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
