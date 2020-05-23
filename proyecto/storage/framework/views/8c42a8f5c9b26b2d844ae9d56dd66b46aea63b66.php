@@ -1,0 +1,1 @@
+profesion index.............<?php /**PATH C:\xampp\htdocs\proyecto\resources\views/profesion/index.blade.php ENDPATH**/ ?>

@@ -1,0 +1,1 @@
+despliegue de datos<?php /**PATH C:\xampp\htdocs\proyecto\resources\views/personas/index.blade.php ENDPATH**/ ?>

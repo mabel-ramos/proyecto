@@ -1,0 +1,1 @@
+profesion creado...<?php /**PATH C:\xampp\htdocs\proyecto\resources\views/profesion/create.blade.php ENDPATH**/ ?>

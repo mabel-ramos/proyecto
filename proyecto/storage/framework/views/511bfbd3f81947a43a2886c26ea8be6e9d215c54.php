@@ -1,0 +1,1 @@
+seccion para editar empleado<?php /**PATH C:\xampp\htdocs\proyecto\resources\views/personas/edit.blade.php ENDPATH**/ ?>
