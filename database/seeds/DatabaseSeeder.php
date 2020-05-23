@@ -1,5 +1,6 @@
 <?php
 
+use App\personas;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,10 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->truncatetables(['categorias','productos']);
+        $this->truncatetables(['categorias','productos','personas','profesions']);
 
         $this->call(CategoriaSeeder::class);
         $this->call(ProductosSeeder::class);
+        $this->call(PersonasSeeder::class);
+        $this->call(ProfesionSeeder::class);
     }
 
     protected function truncatetables(array $tables)

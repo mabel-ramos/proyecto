@@ -46,3 +46,5 @@ Route::resource('/categorias','CategoriaController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/personas','PersonasController@listar')->name('listar');
